@@ -1,0 +1,16 @@
+ls -[Unit]
+Description = Usbmnt 
+After = remote-fs.target network-online.target
+Wants = network-online.target
+
+[Service]
+User = root
+Group = root
+Type = simple
+WorkingDirectory = /tmp
+ExecStart = /usr/local/bin/usbmnt
+#Restart = always
+
+[Install]
+WantedBy = multi-user.target
+

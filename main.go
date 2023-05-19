@@ -1,11 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
 	"time"
-
-	"gopkg.in/yaml.v3"
 )
 
 type Config struct {
@@ -15,18 +11,7 @@ type Config struct {
 var config Config
 
 func main() {
-	//Read the config yaml file
-	data, err := ioutil.ReadFile("config.yaml")
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	err = yaml.Unmarshal(data, &config)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
+	config.MountBaseDirectory = "/media"
 
 	ticker := time.NewTicker(1500 * time.Millisecond)
 	quit := make(chan struct{})
