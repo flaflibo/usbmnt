@@ -90,7 +90,7 @@ func handleAdd(dev string) {
 				}
 
 				knownDevices[dev].Mount = path
-				cmd := exec.Command("mount", "-o", "sync,noexec,nodev,noatime,nodiratime,ro", "/dev/"+dev, path)
+				cmd := exec.Command("mount", "-o", "sync,noexec,nodev,noatime,nodiratime", "/dev/"+dev, path)
 				stdout, err := cmd.Output()
 				if err != nil {
 					fmt.Println("Error::Mount:", err, stdout, "/dev/"+dev, path)
